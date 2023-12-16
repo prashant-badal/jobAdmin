@@ -6,7 +6,9 @@ import React , { useState, useEffect } from 'react'
 const LoginSec = () => {
   const [showPassword, setShowPassword] = React.useState(false);
 
-  const [bgColor, setBgColor] = useState('linear-gradient(to right, #3498db, #f39c12)'); // Initial background color
+  const [bgColor, setBgColor] = useState
+  ("grey");
+ 
   const colors = ['#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#e74c3c'];
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const LoginSec = () => {
 
         <form onSubmit={handleSubmit}>
 
-         <label for="username" >User Name</label>
+         <label htmlFor="username" >User Name</label>
           <TextField
           sx={{marginBottom:"1rem",marginTop:".5rem"}}
           required
@@ -89,7 +91,7 @@ const LoginSec = () => {
                 required
                 
                 >
-          {/* <InputLabel htmlFor="Password"></InputLabel> */}
+        
           <OutlinedInput
                placeholder= 'Type here...'
           sx={{ borderRadius: "20px",backgroundColor:"white"}}
@@ -100,7 +102,7 @@ const LoginSec = () => {
                 <IconButton
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
-                  // onMouseDown={handleMouseDownPassword}
+                 
                   edge="end"
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}

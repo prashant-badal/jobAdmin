@@ -7,6 +7,18 @@ const DynamicTitle = () => {
     const routeTitles = {
         '/': 'Home||Admin',
         '/login': 'login||Admin',
+        '/users':'Candidates',
+        '/employers':'Employers',
+        '/users/add':'Add Candidate',
+        '/job-posting': 'Jobs',
+        '/contact-queries': 'Queries',
+        '/job-type': 'Job Type',
+        '/education': 'Education',
+        '/employement-type': 'Type',
+        '/package-list': 'List',
+        '/category': 'Category',
+        '/industry': 'Industry',
+
         // '/contact': 'Contact Us',
         // Add more routes and titles as needed
       };
