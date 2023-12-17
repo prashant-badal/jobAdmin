@@ -17,6 +17,7 @@ import {
   Select,
   Box,
   Typography,
+  Pagination,
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -155,36 +156,58 @@ const DataTable = () => {
           <TableHead>
             <TableRow  size="small">
               <TableCell>
-                <IconButton onClick={() => handleSort('id')}>
-                  #Id {getSortIcon('id')}
+                <Box sx={{display:"flex"}}>
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>Id</Typography>
+              <IconButton onClick={() => handleSort('id')}>
+                  {getSortIcon('id')}
                 </IconButton>
+                </Box>
+                
               </TableCell>
               <TableCell>
-                <IconButton onClick={() => handleSort('name')}>
-                  Name {getSortIcon('name')}
+              <Box sx={{display:"flex"}}>
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>  Name</Typography>
+              <IconButton onClick={() => handleSort('name')}>
+                  {getSortIcon('name')}
                 </IconButton>
+                </Box>
+                
               </TableCell>
               <TableCell>
+              <Box sx={{display:"flex"}}>
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>   Mobile</Typography>
                 <IconButton onClick={() => handleSort('mobile')}>
-                  Mobile {getSortIcon('mobile')}
+                  {getSortIcon('mobile')}
                 </IconButton>
+                </Box>
               </TableCell>
               <TableCell>
+              <Box sx={{display:"flex"}}>
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>   Email </Typography>
                 <IconButton onClick={() => handleSort('email')}>
-                  Email {getSortIcon('email')}
+                 {getSortIcon('email')}
                 </IconButton>
+                </Box>
               </TableCell>
               <TableCell>
+              <Box sx={{display:"flex"}}>
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>    Job Title </Typography>
                 <IconButton onClick={() => handleSort('jobTitle')}>
-                  Job Title {getSortIcon('jobTitle')}
+                  {getSortIcon('jobTitle')}
                 </IconButton>
+                </Box>
               </TableCell>
               <TableCell>
+              <Box sx={{display:"flex"}}>
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>    Status </Typography>
                 <IconButton onClick={() => handleSort('status')}>
-                  Status {getSortIcon('status')}
+                   {getSortIcon('status')}
                 </IconButton>
+                </Box>
               </TableCell>
-              <TableCell>Action</TableCell>
+              <TableCell>
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}> Action </Typography>
+                </TableCell>
             </TableRow >
           </TableHead>
           <TableBody>
@@ -200,14 +223,15 @@ const DataTable = () => {
                   <IconButton onClick={() => handleView(row.id)} color="primary"  sx={{fontFamily:'Rubik',
                 border:"1px solid red",
                 backgroundColor: "#DAF7A6",
+               padding:"0.1rem",
                 '&:hover': {
                     backgroundColor: "pink",
                   }}}>
-                    <VisibilityIcon />
+                    <VisibilityIcon  />
                   </IconButton>
                   <IconButton onClick={() => handleDelete(row.id)} color="error"  sx={{fontFamily:'Rubik',
                 border:"1px solid red",
-                backgroundColor: "#DAF7A6",
+                backgroundColor: "#DAF7A6", padding:"0.1rem",
                 '&:hover': {
                     backgroundColor: "pink",
                   }}}>
@@ -216,6 +240,7 @@ const DataTable = () => {
                   <IconButton onClick={() => handleUpdate(row.id)} color="warning"  sx={{fontFamily:'Rubik',
                 border:"1px solid red",
                 backgroundColor: "#DAF7A6",
+                padding:"0.1rem",
                 '&:hover': {
                     backgroundColor: "pink",
                   }}}>
@@ -227,6 +252,7 @@ const DataTable = () => {
           </TableBody>
         </Table>
         <TablePagination
+         
           rowsPerPageOptions={[10, 20, 30, 40]}
           component="div"
           count={filteredData.length}
@@ -235,6 +261,14 @@ const DataTable = () => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+         <Pagination variant="outlined" shape="rounded"
+         rowsPerPageOptions={[10, 20, 30, 40]}
+         component="div"
+         count={filteredData.length}
+         rowsPerPage={rowsPerPage}
+         page={page}
+         onPageChange={handleChangePage}
+         onRowsPerPageChange={handleChangeRowsPerPage}/>
       </TableContainer>
       </Box>
   );

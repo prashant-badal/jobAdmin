@@ -28,7 +28,7 @@ const Candidates = () => {
                   }}}
             ><ControlPointDuplicateOutlined/>Add Candidate</Button>
             </Box>
-            {/* <Typography variant="h4"  color="error">Cards for Alerts</Typography> */}
+          
         </Card>
         <DataTable/>
         </Box>

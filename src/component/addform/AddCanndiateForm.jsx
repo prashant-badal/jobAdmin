@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container, Typography, Grid, Card, Box } from '@mui/material';
+import { TextField, Button, Container, Typography, Grid, Card, Box, Paper } from '@mui/material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 const AddCandidateForm = () => {
   const [formData, setFormData] = useState({
@@ -33,16 +33,19 @@ const AddCandidateForm = () => {
   };
 
   return (
-    <Container>
-      <Card sx={{p:3,m:2}}>
-    <Box sx={{display:"flex",justifyContent:"space-between"}}>
-      <Box sx={{display:"flex",}}> < FormatListBulletedIcon/>
-            <Typography variant="h5" sx={{fontFamily:'Rubik',color:"black",marginLeft:"4px"}} > ADD Candidates List</Typography></Box>
-     </Box>
-     </Card>
+    <>
+ 
+     <Container  >
+     <Paper elevation={3} sx={{padding:{xs:2,md:6,borderTop:"6px solid red"}}}
+      >
+   
       <form onSubmit={handleSubmit}>
+       
+
+       
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+
+          <Grid item xs={12} md={6}>
             <TextField
               fullWidth
               label="Name"
@@ -50,9 +53,18 @@ const AddCandidateForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
+              InputProps={{
+                placeholder: 'Type here...',
+                style: {
+                  borderRadius: "10px",
+                  
+                  backgroundColor:"white"
+                  
+                }
+              }}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <TextField
               fullWidth
               label="Email"
@@ -83,7 +95,7 @@ const AddCandidateForm = () => {
               required
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
               label="Password"
@@ -100,8 +112,11 @@ const AddCandidateForm = () => {
             </Button>
           </Grid>
         </Grid>
+        
       </form>
-    </Container>
+      </Paper>
+   </Container> 
+    </>
   );
 };
 

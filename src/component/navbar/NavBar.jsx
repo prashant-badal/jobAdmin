@@ -53,8 +53,8 @@ const NavBar = ({children}) => {
           position="fixed"
           sx={{
             background: `linear-gradient(8deg, rgba(218,10,46,1) 0%, rgba(121,9,30,1) 35%, rgba(222,16,6,1) 100%)`,
-            width: {sm: `calc(100% - ${drawerWidth}px)`},
-            ml: {sm: `${drawerWidth}px`},
+            width: {md: `calc(100% - ${drawerWidth}px)`},
+            ml: {md: `${drawerWidth}px`},
         
           }}
         >
@@ -64,7 +64,7 @@ const NavBar = ({children}) => {
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{mr: 2, display: {sm: "none"}}}
+              sx={{mr: 2, display: {md: "none"}}}
             >
               <MenuIcon />
             </IconButton>
@@ -125,7 +125,7 @@ const NavBar = ({children}) => {
 
         <Box
           component="nav"
-          sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}}
+          sx={{width: {md: drawerWidth}, flexShrink: {sm: 0}}}
           aria-label="mailbox folders"
         >
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -137,7 +137,7 @@ const NavBar = ({children}) => {
               keepMounted: true,
             }}
             sx={{
-              display: {xs: "block", sm: "none"},
+              display: {xs: "block", md: "none"},
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
@@ -152,7 +152,7 @@ const NavBar = ({children}) => {
           <Drawer
             variant="permanent"
             sx={{
-              display: {xs: "none", sm: "block"},
+              display: {xs: "none", md: "block"},
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: drawerWidth,
@@ -169,7 +169,7 @@ const NavBar = ({children}) => {
           </Box>
           <Box
           component="main"
-          sx={{flexGrow: 1, width: {sm: `calc(100% - ${drawerWidth}px)`}}}
+          sx={{flexGrow: 1, width: {md: `calc(100% - ${drawerWidth}px)`}}}
         >
           <Toolbar  
       

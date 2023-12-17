@@ -1,24 +1,13 @@
-import { Box, TextField,CardContent, Typography, Button, Card, FormControl, OutlinedInput, InputLabel, InputAdornment, IconButton, } from '@mui/material'
+import { Box, TextField,CardContent, Typography, Button, Card, FormControl, OutlinedInput,  InputAdornment, IconButton, } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import React , { useState, useEffect } from 'react'
+import React  from 'react'
+import backgroundImage from '../../asset/images/logo/2.avif';
 
 const LoginSec = () => {
   const [showPassword, setShowPassword] = React.useState(false);
 
-  const [bgColor, setBgColor] = useState
-  ("grey");
- 
-  const colors = ['#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#e74c3c'];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
-      setBgColor(randomColor);
-    }, 3000); // Change color every 3 seconds (3000 milliseconds)
-
-    return () => clearInterval(interval);
-  }, [colors]);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
 
@@ -34,30 +23,32 @@ const LoginSec = () => {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
-        bgcolor:bgColor,
-        transition: 'background-color 1s ease',
+        
+        backgroundImage:`url(${ backgroundImage})`,
+        backgroundRepeat:"no-repeat",
+        backgroundSize:'cover',
+        backgroundPosition:"center",
         padding:"2rem",
      
     }}>
     <Card 
-    // className={classes.transparentCard}
     sx={{maxWidth:500,padding:"2rem",backgroundColor:"transparent",   boxShadow:"5px 5px 5px 5px black"}}
     >
       <CardContent>
-        <Typography variant="h5" align="left" 
-        sx={{ fontFamily: 'Rubik',color:"white"}}
+        <Typography variant="h5" 
+        sx={{ fontFamily: 'Rubik',textAlign:"center"}}
         >
           Login to 
         </Typography>
-        <Typography variant="h5" align="left" gutterBottom
-        sx={{ fontFamily: 'Rubik',color:"white"}}
+        <Typography variant="h5" align="center" gutterBottom
+        sx={{ fontFamily: 'Rubik'}}
         >
            ADMIN PORTAL
         </Typography>
 
         <form onSubmit={handleSubmit}>
 
-         <label htmlFor="username" >User Name</label>
+         <label htmlFor="username" style={{fontFamily: 'Rubik'}} >User Name</label>
           <TextField
           sx={{marginBottom:"1rem",marginTop:".5rem"}}
           required
@@ -80,7 +71,7 @@ const LoginSec = () => {
 
 
           
-          <label htmlFor="Password" >Password</label>
+          <label htmlFor="Password" style={{fontFamily: 'Rubik'}}>Password</label>
               <FormControl 
                variant="outlined"
                 fullWidth
@@ -116,7 +107,9 @@ const LoginSec = () => {
           <Button
             type="submit"
             variant="contained"
-            sx={{ border:"1px solid white", borderRadius:"20%",backgroundColor:"transparent"}}
+            sx={{ border:"2px solid red", borderRadius:"20%",
+            color:"#36454F",
+            backgroundColor:"transparent"}}
           >
             Log in
           </Button>

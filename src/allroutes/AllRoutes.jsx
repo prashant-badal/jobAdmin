@@ -17,6 +17,7 @@ import GeneralSetting from "../pages/setting/generalSetting/GeneralSetting"
 import EmailTemplates from "../pages/setting/emailTemplates/EmailTemplates"
 import Language from "../pages/setting/language/Language"
 import AddCandidate from "../pages/addCandiate/AddCandidate"
+import AddEmployer from "../pages/addEmployer/AddEmployer"
 
  const AllRoutes =()=>{
     return (
@@ -24,6 +25,7 @@ import AddCandidate from "../pages/addCandiate/AddCandidate"
             <Routes>
                 <Route path='/' element={<Dashboard />} />
                 <Route path='/employers' element={<Employers />} />
+                <Route path='/employer/add' element={<AddEmployer/>} />
 
                 <Route path='/users' element={<Candidates/>} />
                 <Route path='/users/add' element={<AddCandidate/>} />

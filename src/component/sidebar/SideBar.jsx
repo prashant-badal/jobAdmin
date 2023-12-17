@@ -24,7 +24,7 @@ import ReorderIcon from '@mui/icons-material/Reorder';
 import WifiChannelIcon from '@mui/icons-material/WifiChannel';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import { Link } from 'react-router-dom';
-
+import logo from '../../asset/images/logo/logo.png'
 
 const SideBar = () => {
     const [openProduct, setOpenProduct] = useState(true);
@@ -54,7 +54,7 @@ const SideBar = () => {
       }}>
              <Typography component={Link} to="/" sx={{padding:".8rem",paddingLeft:"2.2rem"}}>
 
-            <img src="logo.png" alt="logo" width="100%"  height="32px"/>
+            <img src={logo} alt="logo" width="100%"  height="32px"/>
 </Typography> 
           
         
