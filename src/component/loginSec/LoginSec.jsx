@@ -1,19 +1,34 @@
 import { Box, TextField,CardContent, Typography, Button, Card, FormControl, OutlinedInput,  InputAdornment, IconButton, } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import React  from 'react'
+import React ,{useState} from 'react'
 import backgroundImage from '../../asset/images/logo/2.avif';
+import { useAuth } from '../../contextApi/AuthProvider';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginSec = () => {
+  // const { login } = useAuth();
+  const navigate=useNavigate();
+  const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = React.useState(false);
-
+  const [formData, setFormData] = useState({
+    username:'',
+    password:''})
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle login logic here
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      navigate('/')
       };
   return (
    <>
@@ -67,12 +82,17 @@ const LoginSec = () => {
            
             variant="outlined"
             fullWidth
+            value={formData.username}
+            onChange={handleChange}
           />
 
 
           
           <label htmlFor="Password" style={{fontFamily: 'Rubik'}}>Password</label>
-              <FormControl 
+              <FormControl
+               value={formData.password}
+               onChange={handleChange}
+              
                variant="outlined"
                 fullWidth
                 color='secondary'

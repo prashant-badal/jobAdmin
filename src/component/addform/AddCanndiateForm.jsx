@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Grid, Card, Box, Paper } from '@mui/material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+
+
 const AddCandidateForm = () => {
   const [formData, setFormData] = useState({
     name: '',

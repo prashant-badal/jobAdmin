@@ -26,8 +26,10 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import SortIcon from '@mui/icons-material/Sort';
 import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from 'react-router-dom';
 
 const DataTable = () => {
+  const navigate =useNavigate();
   const [sortColumn, setSortColumn] = useState('');
   const [sortDirection, setSortDirection] = useState('asc');
   const [searchTerm, setSearchTerm] = useState('');
@@ -84,10 +86,10 @@ const DataTable = () => {
 
   const paginatedData = sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
-  const handleView = (id) => {
-    // Logic for viewing the row with the given ID
-    console.log(`View item with ID: ${id}`);
-  };
+  // const handleView = (id) => {
+  //   // Logic for viewing the row with the given ID
+  //   console.log(`View item with ID: ${id}`);
+  // };
 
   const handleDelete = (id) => {
     // Logic for deleting the row with the given ID
@@ -97,6 +99,7 @@ const DataTable = () => {
   const handleUpdate = (id) => {
     // Logic for updating the row with the given ID
     console.log(`Update item with ID: ${id}`);
+    navigate(`/users/edit/${id}`)
   };
 
   return (
@@ -220,27 +223,27 @@ const DataTable = () => {
                 <TableCell>{row.jobTitle}</TableCell>
                 <TableCell>{row.status}</TableCell>
                 <TableCell>
-                  <IconButton onClick={() => handleView(row.id)} color="primary"  sx={{fontFamily:'Rubik',
+                  {/* <IconButton onClick={() => handleView(row.id)} color="primary"  sx={{fontFamily:'Rubik',
                 border:"1px solid red",
                 backgroundColor: "#DAF7A6",
-               padding:"0.1rem",
+               padding:"0.005rem",
                 '&:hover': {
                     backgroundColor: "pink",
                   }}}>
                     <VisibilityIcon  />
-                  </IconButton>
-                  <IconButton onClick={() => handleDelete(row.id)} color="error"  sx={{fontFamily:'Rubik',
+                  </IconButton> */}
+                  <IconButton onClick={() => handleDelete(row.id)} color="error"  sx={{fontFamily:'Rubik',marginRight:".7rem",
                 border:"1px solid red",
-                backgroundColor: "#DAF7A6", padding:"0.1rem",
+                backgroundColor: "#DAF7A6", padding:"0.005rem",
                 '&:hover': {
                     backgroundColor: "pink",
                   }}}>
                     <DeleteIcon />
                   </IconButton>
-                  <IconButton onClick={() => handleUpdate(row.id)} color="warning"  sx={{fontFamily:'Rubik',
+                  <IconButton onClick={() => handleUpdate(row.id)} color="black"  sx={{fontFamily:'Rubik',
                 border:"1px solid red",
                 backgroundColor: "#DAF7A6",
-                padding:"0.1rem",
+                padding:"0.002rem",
                 '&:hover': {
                     backgroundColor: "pink",
                   }}}>

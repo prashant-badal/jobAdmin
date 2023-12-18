@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import TopCompany from '../../component/tableData/TopCompany';
 import TopCandidate from '../../component/tableData/TopCandiate';
+import UpdateCandidate from '../updateCandidate/UpdateCandidiate';
+import AddJob from '../addJob/AddJob';
 const Dashboard = () => {
     DynamicTitle();
   return (
@@ -35,8 +37,9 @@ const Dashboard = () => {
         
         </Paper>
       </Grid>
+    
     </Grid>
-
+<AddJob/>
         
       {/* <Card sx={{p:3,m:2}}>
     
