@@ -1,7 +1,7 @@
 // UpdateCandidate.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button, TextField, MenuItem, Box, Paper, Container } from '@mui/material';
+import { Button, TextField, MenuItem,  Paper, Container } from '@mui/material';
 
 const EditCandidate = () => {
   const { id } = useParams();

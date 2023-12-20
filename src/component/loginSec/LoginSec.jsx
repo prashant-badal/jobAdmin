@@ -2,18 +2,18 @@ import { Box, TextField,CardContent, Typography, Button, Card, FormControl, Outl
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import React ,{useState} from 'react'
-import backgroundImage from '../../asset/images/logo/2.avif';
+import backgroundImage from '../../asset/images/logo/neww.avif'
 import { useAuth } from '../../contextApi/AuthProvider';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const LoginSec = () => {
-  // const { login } = useAuth();
+  const { login } = useAuth();
   const navigate=useNavigate();
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = React.useState(false);
   const [formData, setFormData] = useState({
-    username:'',
+   userName:'',
     password:''})
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -26,10 +26,61 @@ const LoginSec = () => {
     });
   };
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      navigate('/')
-      };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("working")
+  
+    try {
+      const response = await axios.post('https://job-portal-website-by5i.onrender.com/Job-Portal/Admin/signIn', formData);
+
+      console.log("server response",response)
+     
+      
+      if (response.status === 200) {
+        const token = response.data.accessToken;
+        localStorage.setItem('token',token)
+        navigate('/');
+        console.log('Login successful. Token:', token);
+      } 
+      else {
+        setError('Login failed.');
+      }
+     
+      
+    } catch (error) {
+      console.error(error);
+      setError(error.message); // Display error message to user
+    }
+  };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault(); // Prevent default form submission behavior
+   
+  //   try {
+  //     console.log("working")
+  //     const response = await axios.post('https://job-portal-website-by5i.onrender.com/Job-Portal/Admin/signIn', formData);
+    
+  //     if (response.status === 200) {
+  //       console.log(response.data)
+  //       const token = response.data.token;
+  //       console.log("successful")
+  //       localStorage.setItem("token",token)
+  //       // login();
+        
+  //       console.log(response.data.token)
+  //       navigate('/');
+  //       alert("Login successful")
+       
+  //       console.log('Login successful. Token:', token);
+  //     } else {
+  //       setError('Login failed.');
+  //     }
+  //   } catch (error) {
+  //     setError('Error occurred during login.');
+  //   }
+        
+  //   }
   return (
    <>
 
@@ -51,25 +102,25 @@ const LoginSec = () => {
     >
       <CardContent>
         <Typography variant="h5" 
-        sx={{ fontFamily: 'Rubik',textAlign:"center"}}
+        sx={{ fontFamily: 'Rubik',textAlign:"center",color:"white"}}
         >
           Login to 
         </Typography>
         <Typography variant="h5" align="center" gutterBottom
-        sx={{ fontFamily: 'Rubik'}}
+        sx={{ fontFamily: 'Rubik',color:"white"}}
         >
            ADMIN PORTAL
         </Typography>
 
         <form onSubmit={handleSubmit}>
 
-         <label htmlFor="username" style={{fontFamily: 'Rubik'}} >User Name</label>
+         <label htmlFor="userName" style={{fontFamily: 'Rubik',color:"white"}} >User Name</label>
           <TextField
           sx={{marginBottom:"1rem",marginTop:".5rem"}}
           required
            color='secondary'
            size='small'
-           id="username" name="username"
+           id="userName" name="userName"
         InputProps={{
           placeholder: 'Type here...',
           style: {
@@ -82,20 +133,20 @@ const LoginSec = () => {
            
             variant="outlined"
             fullWidth
-            value={formData.username}
+            value={formData.userName}
             onChange={handleChange}
           />
 
 
           
-          <label htmlFor="Password" style={{fontFamily: 'Rubik'}}>Password</label>
+          <label htmlFor="password" style={{fontFamily: 'Rubik',color:"white"}}>Password</label>
               <FormControl
                value={formData.password}
                onChange={handleChange}
-              
+          
                variant="outlined"
                 fullWidth
-                color='secondary'
+                // color="white"
                 size='small'
            
                 sx={{marginBottom:"1rem",marginTop:".5rem"}}
@@ -107,11 +158,12 @@ const LoginSec = () => {
                placeholder= 'Type here...'
           sx={{ borderRadius: "20px",backgroundColor:"white"}}
             id="password"
+            name='password'
             type={showPassword ? 'text' : 'password'}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
-                  aria-label="toggle password visibility"
+                  aria-label="toggle password"
                   onClick={handleClickShowPassword}
                  
                   edge="end"
@@ -128,11 +180,12 @@ const LoginSec = () => {
             type="submit"
             variant="contained"
             sx={{ border:"2px solid red", borderRadius:"20%",
-            color:"#36454F",
+            color:"white",
             backgroundColor:"transparent"}}
           >
             Log in
           </Button>
+          {error && <div style={{color:"red"}}>{error}</div>}
         </form>
       </CardContent>
     </Card>

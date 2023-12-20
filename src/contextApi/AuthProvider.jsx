@@ -1,6 +1,5 @@
-// AuthProvider.jsx
 import React, { createContext, useContext, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -9,22 +8,27 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-    const navigate=Navigate()
+  const navigate=useNavigate()
   const [authenticated, setAuthenticated] = useState(false);
 
   const login = () => {
     // Your login logic here, set authenticated to true upon successful login
     setAuthenticated(true);
-    navigate('/')
+    // You can handle redirection after login in your components or routing setup
   };
 
   const logout = () => {
     // Your logout logic here, set authenticated to false upon logout
     setAuthenticated(false);
+    localStorage.removeItem('token');
+    navigate('/login')
+    
+
+    // You can handle redirection after logout in your components or routing setup
   };
 
   return (
-    <AuthContext.Provider value={{ authenticated, login, logout }}>
+    <AuthContext.Provider value={{ authenticated,logout }}>
       {children}
     </AuthContext.Provider>
   );

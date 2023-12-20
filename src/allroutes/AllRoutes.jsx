@@ -19,6 +19,9 @@ import Language from "../pages/setting/language/Language"
 import AddCandidate from "../pages/addCandiate/AddCandidate"
 import AddEmployer from "../pages/addEmployer/AddEmployer"
 import UpdateCandidate from "../pages/updateCandidate/UpdateCandidiate"
+import AddPackage from "../pages/addPackage/AddPackage"
+import EditPackage from "../component/updateForm/EditPackage"
+import UpdatePackage from "../pages/updatePackage/UpdatePackage"
 
  const AllRoutes =()=>{
     return (
@@ -43,7 +46,8 @@ import UpdateCandidate from "../pages/updateCandidate/UpdateCandidiate"
 
                 {/* user package */}
                 <Route path='/package-list' element={<PackageList/>} />
-                
+                <Route path='/package/add' element={<AddPackage/>} />
+                <Route path='/package/edit/:id' element={<UpdatePackage/>} />
                 {/* setting */}
                 <Route path='/category' element={<Category/>} />
                 <Route path='/industry' element={<Industry/>} />

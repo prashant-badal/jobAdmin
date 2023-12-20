@@ -1,12 +1,15 @@
 import AllRoutes from './allroutes/AllRoutes';
 import './App.css';
+import { AuthProvider } from './contextApi/AuthProvider';
 
 const App=() =>{
   
   return (
    <>
- 
-   <AllRoutes/>
+    <AuthProvider>
+     <AllRoutes/>
+    </AuthProvider>
+   
    </>
   );
 }

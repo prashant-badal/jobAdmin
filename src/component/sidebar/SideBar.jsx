@@ -1,28 +1,21 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Collapse, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Typography } from '@mui/material'
+import {  Box, Collapse, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import SendIcon from '@mui/icons-material/Send';
+
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
 
 
 
-import DashboardTwoToneIcon from '@mui/icons-material/DashboardTwoTone';
-import ProductionQuantityLimitsTwoToneIcon from '@mui/icons-material/ProductionQuantityLimitsTwoTone';
-import FormatListNumberedTwoToneIcon from '@mui/icons-material/FormatListNumberedTwoTone';
 
-import SupportAgentTwoToneIcon from '@mui/icons-material/SupportAgentTwoTone';
-import StreetviewTwoToneIcon from '@mui/icons-material/StreetviewTwoTone';
-import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
-import CreditScoreTwoToneIcon from '@mui/icons-material/CreditScoreTwoTone';
+
 import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import ReorderIcon from '@mui/icons-material/Reorder';
-import WifiChannelIcon from '@mui/icons-material/WifiChannel';
-import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import ListIcon from '@mui/icons-material/List';
+
 import { Link } from 'react-router-dom';
 import logo from '../../asset/images/logo/logo.png'
 
@@ -321,7 +314,7 @@ const SideBar = () => {
 
        {/*User Package */}
        <ListItem sx={{color:"grey",bgcolor:"#36454F",paddingLeft:"1.7rem"}} >
-          <Typography sx={{fontFamily: 'Rubik'}}>Job Attributes </Typography>
+          <Typography sx={{fontFamily: 'Rubik'}}>User Package </Typography>
           </ListItem> 
 
           {/* PackageList */}
@@ -338,7 +331,7 @@ const SideBar = () => {
             , '&:hover': {
           color:"white"
             },}}>
-              <PeopleAltIcon sx={{fontSize:'1.3rem'}} />
+              <CardGiftcardIcon sx={{fontSize:'1.3rem'}} />
               <Typography sx={{fontFamily:'Rubik',marginLeft:"10px"}}> PackageList</Typography>
               </Box>
            </ListItemButton>
@@ -364,7 +357,7 @@ const SideBar = () => {
               , '&:hover': {
             color:"white"
               },}}>
-                <PeopleAltIcon sx={{fontSize:'1.3rem'}} />
+                <ListIcon sx={{fontSize:'1.3rem'}} />
                 <Typography sx={{fontFamily:'Rubik',marginLeft:"10px"}}> Category</Typography>
                 </Box>
             </ListItemButton>

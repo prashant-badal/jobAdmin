@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NavBar  from "../../component/navbar/NavBar"
 import DynamicTitle from '../../component/dynamicTitle/DynamicTitle'
 import { Box, Button, Card, Grid, Paper, Typography } from '@mui/material';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import TopCompany from '../../component/tableData/TopCompany';
 import TopCandidate from '../../component/tableData/TopCandiate';
 import UpdateCandidate from '../updateCandidate/UpdateCandidiate';
 import AddJob from '../addJob/AddJob';
+
 const Dashboard = () => {
+  const navigate=useNavigate()
     DynamicTitle();
+
+    useEffect(()=>{
+      if(!localStorage.getItem("token")){
+        navigate('/login')
+      }
+    },[])
   return (
    <>
     <NavBar>
@@ -39,7 +47,7 @@ const Dashboard = () => {
       </Grid>
     
     </Grid>
-<AddJob/>
+{/* <AddJob/> */}
         
       {/* <Card sx={{p:3,m:2}}>
     

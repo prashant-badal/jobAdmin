@@ -6,7 +6,14 @@ import LogoutTwoToneIcon from '@mui/icons-material/LogoutTwoTone';
 import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import { Link } from 'react-router-dom';
 
+import { useAuth } from '../../contextApi/AuthProvider';
+
 const SideMenu = () => {
+    const {logout}=useAuth()
+
+    const handleLogout=()=>{
+        logout();
+    }
   return (
  <>
  <List>
@@ -24,7 +31,7 @@ const SideMenu = () => {
         <ListItemText primary=" Profile" />
     </ListItem>
     <Divider/>
-    <ListItem component={Link} to="/login">
+    <ListItem onClick={handleLogout}>
         <ListItemIcon>
         <LogoutTwoToneIcon />
         </ListItemIcon>

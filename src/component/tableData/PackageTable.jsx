@@ -26,7 +26,7 @@ import SortIcon from '@mui/icons-material/Sort';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 
-const DataTable = () => {
+const PackageTable = () => {
   const navigate =useNavigate();
   const [sortColumn, setSortColumn] = useState('');
   const [sortDirection, setSortDirection] = useState('asc');
@@ -35,12 +35,11 @@ const DataTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const data = [
-    { id: 1, name: 'John Doe', mobile: '123-456-7890', email: 'john@example.com', jobTitle: 'Software Engineer', status: 'Active' },
-    { id: 2, name: 'Jane Smith', mobile: '987-654-3210', email: 'jane@example.com', jobTitle: 'Data Analyst', status: 'Inactive' },
-    { id: 3, name: 'Bob Johnson', mobile: '555-555-5555', email: 'bob@example.com', jobTitle: 'UX Designer', status: 'Active' },
-    { id: 4, name: 'Alice Williams', mobile: '111-222-3333', email: 'alice@example.com', jobTitle: 'Product Manager', status: 'Inactive' },
-    { id: 5, name: 'Charlie Brown', mobile: '999-888-7777', email: 'charlie@example.com', jobTitle: 'QA Engineer', status: 'Active' },
-    // Add more data as needed
+    { id: 1, name: 'John Doe', price: 123, days:2, packageFor: 'Software Engineer', status: 'Active' },
+    { id:2 , name: 'John Doe', price:123, days:2, packageFor: 'Software Engineer', status: 'Active' },
+    { id: 3, name: 'John Doe', price: 12, days:2, packageFor: 'Software Engineer', status: 'Active' },
+    { id: 4, name: 'John Doe', price: 3, days:2, packageFor: 'Software Engineer', status: 'Active' },
+    
   ];
 
   const handleChangePage = (event, newPage) => {
@@ -84,7 +83,10 @@ const DataTable = () => {
 
   const paginatedData = sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
- 
+  // const handleView = (id) => {
+  //   // Logic for viewing the row with the given ID
+  //   console.log(`View item with ID: ${id}`);
+  // };
 
   const handleDelete = (id) => {
     // Logic for deleting the row with the given ID
@@ -94,7 +96,7 @@ const DataTable = () => {
   const handleUpdate = (id) => {
     // Logic for updating the row with the given ID
     console.log(`Update item with ID: ${id}`);
-    navigate(`/users/edit/${id}`)
+    navigate(`/package/edit/${id}`)
   };
 
   return (
@@ -173,25 +175,25 @@ const DataTable = () => {
               </TableCell>
               <TableCell>
               <Box sx={{display:"flex"}}>
-              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>   Mobile</Typography>
-                <IconButton onClick={() => handleSort('mobile')}>
-                  {getSortIcon('mobile')}
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>  Price</Typography>
+                <IconButton onClick={() => handleSort('price')}>
+                  {getSortIcon('price')}
                 </IconButton>
                 </Box>
               </TableCell>
               <TableCell>
               <Box sx={{display:"flex"}}>
-              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>   Email </Typography>
-                <IconButton onClick={() => handleSort('email')}>
-                 {getSortIcon('email')}
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>   No. of Days </Typography>
+                <IconButton onClick={() => handleSort('days')}>
+                 {getSortIcon('days')}
                 </IconButton>
                 </Box>
               </TableCell>
               <TableCell>
               <Box sx={{display:"flex"}}>
-              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>    Job Title </Typography>
-                <IconButton onClick={() => handleSort('jobTitle')}>
-                  {getSortIcon('jobTitle')}
+              <Typography variant='h6'sx={{fontFamily:"Rubik",p:.8}}>    Package For </Typography>
+                <IconButton onClick={() => handleSort('packageFor')}>
+                  {getSortIcon('packageFor')}
                 </IconButton>
                 </Box>
               </TableCell>
@@ -213,27 +215,19 @@ const DataTable = () => {
               <TableRow key={index}  sx={{'&:nth-of-type(odd)': { backgroundColor: '#f9f9f9' } }}>
                 <TableCell>{row.id}</TableCell>
                 <TableCell>{row.name}</TableCell>
-                <TableCell>{row.mobile}</TableCell>
-                <TableCell>{row.email}</TableCell>
-                <TableCell>{row.jobTitle}</TableCell>
+                <TableCell>{row.price}</TableCell>
+                <TableCell>{row.days}</TableCell>
+                <TableCell>{row.packageFor}</TableCell>
                 <TableCell>{row.status}</TableCell>
                 <TableCell>
-                  {/* <IconButton onClick={() => handleView(row.id)} color="primary"  sx={{fontFamily:'Rubik',
-                border:"1px solid red",
-                backgroundColor: "#DAF7A6",
-               padding:"0.005rem",
-                '&:hover': {
-                    backgroundColor: "pink",
-                  }}}>
-                    <VisibilityIcon  />
-                  </IconButton> */}
+             
                   <IconButton onClick={() => handleDelete(row.id)} color="error"  sx={{fontFamily:'Rubik',marginRight:".7rem",
                 border:"1px solid red",
                 backgroundColor: "#DAF7A6", padding:"0.005rem",
                 '&:hover': {
                     backgroundColor: "pink",
                   }}}>
-                    < DeleteIcon/>
+                    <DeleteIcon />
                   </IconButton>
                   <IconButton onClick={() => handleUpdate(row.id)} color="black"  sx={{fontFamily:'Rubik',
                 border:"1px solid red",
@@ -272,4 +266,4 @@ const DataTable = () => {
   );
 };
 
-export default DataTable;
+export default PackageTable;
