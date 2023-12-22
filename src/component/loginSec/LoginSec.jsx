@@ -5,11 +5,11 @@ import React ,{useState} from 'react'
 import backgroundImage from '../../asset/images/logo/neww.avif'
 import { useAuth } from '../../contextApi/AuthProvider';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 
 const LoginSec = () => {
-  const { login } = useAuth();
-  const navigate=useNavigate();
+  const { login ,authenthenicated} = useAuth();
+  
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = React.useState(false);
   const [formData, setFormData] = useState({
@@ -39,9 +39,11 @@ const LoginSec = () => {
       
       if (response.status === 200) {
         const token = response.data.accessToken;
-        localStorage.setItem('token',token)
-        navigate('/');
+        localStorage.setItem('token',token);
+        login()
         console.log('Login successful. Token:', token);
+        console.log("auth :", authenthenicated)
+       
       } 
       else {
         setError('Login failed.');

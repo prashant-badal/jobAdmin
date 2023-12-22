@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -14,21 +14,24 @@ export const AuthProvider = ({ children }) => {
   const login = () => {
     // Your login logic here, set authenticated to true upon successful login
     setAuthenticated(true);
-    // You can handle redirection after login in your components or routing setup
+    navigate('/');
+   
+    
+   
   };
 
   const logout = () => {
     // Your logout logic here, set authenticated to false upon logout
     setAuthenticated(false);
     localStorage.removeItem('token');
-    navigate('/login')
+    navigate('/login');
     
 
     // You can handle redirection after logout in your components or routing setup
   };
 
   return (
-    <AuthContext.Provider value={{ authenticated,logout }}>
+    <AuthContext.Provider value={{ authenticated,login,logout}}>
       {children}
     </AuthContext.Provider>
   );

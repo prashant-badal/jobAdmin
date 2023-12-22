@@ -18,6 +18,7 @@ import ListIcon from '@mui/icons-material/List';
 
 import { Link } from 'react-router-dom';
 import logo from '../../asset/images/logo/logo.png'
+import CreditScoreIcon from '@mui/icons-material/CreditScore';
 
 const SideBar = () => {
     const [openProduct, setOpenProduct] = useState(true);
@@ -224,7 +225,7 @@ const SideBar = () => {
             , '&:hover': {
           color:"white"
             },}}>
-              <PeopleAltIcon sx={{fontSize:'1.3rem'}} />
+              <CreditScoreIcon sx={{fontSize:'1.3rem'}} />
               <Typography sx={{fontFamily:'Rubik',marginLeft:"10px"}}>   Payments</Typography>
               </Box>
            </ListItemButton>

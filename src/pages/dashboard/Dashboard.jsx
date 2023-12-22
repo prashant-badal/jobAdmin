@@ -12,14 +12,14 @@ import UpdateCandidate from '../updateCandidate/UpdateCandidiate';
 import AddJob from '../addJob/AddJob';
 
 const Dashboard = () => {
-  const navigate=useNavigate()
+  // const navigate=useNavigate()
     DynamicTitle();
 
-    useEffect(()=>{
-      if(!localStorage.getItem("token")){
-        navigate('/login')
-      }
-    },[])
+    // useEffect(()=>{
+    //   if(!localStorage.getItem("token")){
+    //     navigate('/login')
+    //   }
+    // },[])
   return (
    <>
     <NavBar>

@@ -22,12 +22,19 @@ import UpdateCandidate from "../pages/updateCandidate/UpdateCandidiate"
 import AddPackage from "../pages/addPackage/AddPackage"
 import EditPackage from "../component/updateForm/EditPackage"
 import UpdatePackage from "../pages/updatePackage/UpdatePackage"
+import { useAuth } from "../contextApi/AuthProvider"
+import NotFound from "../pages/notFound/NotFound"
+import AddCoupon from "../pages/addCoupon/AddCoupon"
+import UpdateCoupon from "../pages/updateCoupon/UpdateCoupon"
 
  const AllRoutes =()=>{
+    const {authenthenicated} =useAuth()
     return (
         <>
             <Routes>
-                <Route path='/' element={<Dashboard />} />
+                
+                
+                <Route path='/' element={<Dashboard />  } />
                 <Route path='/employers' element={<Employers />} />
                 <Route path='/employer/add' element={<AddEmployer/>} />
 
@@ -52,13 +59,17 @@ import UpdatePackage from "../pages/updatePackage/UpdatePackage"
                 <Route path='/category' element={<Category/>} />
                 <Route path='/industry' element={<Industry/>} />
                 <Route path='/coupons' element={<Coupons/>} />
+                <Route path='/coupon/add' element={<AddCoupon/>} />
+                <Route path='/coupon/edit/:id' element={<UpdateCoupon/>} />
                 {/* <Route path='/location' element={<Location/>} /> */}
 
                 <Route path='/general-setting' element={<GeneralSetting/>} />
                 
                 <Route path='/email-templates' element={<EmailTemplates/>} />
                 <Route path='/language' element={<Language/>} />
-
+            
+           
+            {/* <Route path="*" element={<NotFound/>}/>  */}
 
                 <Route path='/login' element={<Login/>} />
             </Routes>
